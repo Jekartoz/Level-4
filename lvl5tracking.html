@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INPUT JAWABAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #000;
+      color: #ff3333;
+      font-family: 'share tech mono', monospace;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff3333;
+      margin-bottom: 10px;
+    }
+    .node-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .node {
+      padding: 18px;
+      text-align: center;
+      background: #111;
+      border: 1px solid #ff3333;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .node.active {
+      background: #ff3333;
+      color: #000;
+    }
+    .node:hover {
+      background: #222;
+    }
+    #logDisplay {
+      white-space: pre-wrap;
+      margin-top: 25px;
+      background: #111;
+      color: #ff3333;
+      padding: 20px;
+      border: 1px solid #ff3333;
+      min-height: 150px;
+    }
+    .container {
+  margin: 50px auto;
+  background-color: #000;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px red;
+  width: 90%;
+  max-width: 400px;
+  font-size: 20px;
+}
+  </style>
+</head>
+<body
+<div class="container">
+<h1>LEVEL 5 — TRACE INTERCEPT MAP</h1>
+<p>Pilih salah satu node relay untuk memeriksa log sadapan.</p>
+
+<div class="node-grid">
+  <div class="node" id="node0" onclick="showLog(0)">NODE A</div>
+  <div class="node" id="node1" onclick="showLog(1)">NODE B</div>
+  <div class="node" id="node2" onclick="showLog(2)">NODE C</div>
+  <div class="node" id="node3" onclick="showLog(3)">NODE D</div>
+  <div class="node" id="node4" onclick="showLog(4)">NODE E</div>
+  <div class="node" id="node5" onclick="showLog(5)">NODE F</div>
+  <div class="node" id="node6" onclick="showLog(6)">NODE G</div>
+  <div class="node" id="node7" onclick="showLog(7)">NODE H</div>
+ <div class="node" id="node8" onclick="showLog(8)">NODE I</div>
+ <div class="node" id="node9" onclick="showLog(9)">NODE J</div>
+</div>
+<div id="nextLevelBtn" style="display:none; margin-top:30px;">
+  <button onclick="window.location.href='level6.html'" style="
+    padding: 14px 30px;
+    background: #00ff00;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  ">PROCEED TO LEVEL 6</button>
+</div>
+<div id="logDisplay">[SYSTEM] Awaiting intercept log…</div>
+
+<script>
+const logs = [
+  "[04:02] 0011: Jangan biarkan trace SECTOR-D kosong. Pindahkan EXEC.4AF ke jalur alternatif.",
+  "Saya menjadi I#O@I>I",
+  "Mereka sudah berhasil saya arahkan dan terjebak di jalur dummy",
+  "1011: Kalau sampai log SECTOR-D bocor, saya yang bersihkan sisa eksekusinya.",
+  "[05:15] 0001: Status payload?",
+  "Phantom Trace aktif. Pastikan trainee tetap di jalur dummy!",
+  "EXEC.7ZX anomaly detected.",
+  "10010: Jangan cabut trace relay utama sampai sinyal backup muncul.",
+  "[03:70]: Jalur aman. Phantom route clear",
+  "Siapkan sesi terminasi. Pastikan semua log dummy tetap aktif!"
+];
+document.getElementById("nextLevelBtn").style.display = "block";
+function showLog(index) {
+  for (let i = 0; i < 10; i++) {
+    document.getElementById("node"+i).classList.remove("active");
+  }
+  document.getElementById("node"+index).classList.add("active");
+  document.getElementById("logDisplay").textContent = logs[index];
+}
+</script>
+
+</body>
+</html>

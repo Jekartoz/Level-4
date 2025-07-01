@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>LEVEL 5 — TRACE INTERCEPT MAP</title>
+  <style>
+    body {
+      background: #000;
+      color: #00ff00;
+      font-family: 'Share Tech Mono', monospace;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #ff3333;
+      margin-bottom: 30px;
+      text-shadow: 0 0 5px #ff3333;
+    }
+    .node-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 120px);
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .node {
+      background: #111;
+      border: 1px solid #00ff00;
+      padding: 25px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .node:hover {
+      background: #222;
+    }
+    #logDisplay {
+      white-space: pre-wrap;
+      text-align: left;
+      max-width: 500px;
+      margin: 20px auto;
+      background: #111;
+      border: 1px solid #ff3333;
+      padding: 20px;
+      display: none;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: #00ff00;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #33ff33;
+    }
+  </style>
+</head>
+<body>
+  <h1>LEVEL FIVE: DECEPTION TRACE CONSOLE</h1>
+<p>Interception node archive loaded. Review each node log. Be advised — several contain falsified data. Cross-analyze to locate the true mastermind and remaining operative.</p>
+
+<div id="nodeContainer">
+  <button onclick="loadNode('node1.html')">[NODE 01]</button>
+  <button onclick="loadNode('node2.html')">[NODE 02]</button>
+  <button onclick="loadNode('node3.html')">[NODE 03]</button>
+  <button onclick="loadNode('node4.html')">[NODE 04]</button>
+  <button onclick="loadNode('node5.html')">[NODE 05]</button>
+  <button onclick="loadNode('node6.html')">[NODE 06]</button>
+  <button onclick="loadNode('node7.html')">[NODE 07]</button>
+  <button onclick="loadNode('node8.html')">[NODE 08]</button>
+  <button onclick="loadNode('node9.html')">[NODE 09]</button>
+  <button onclick="loadNode('node10.html')">[NODE 10]</button>
+</div>
+
+<div id="logDisplay" style="white-space: pre-wrap; margin-top: 20px; background: #111; color: #00ff00; padding: 20px; border: 1px solid #ff3333;"></div>
+
+<div id="nextBtn" style="display:none; margin-top: 30px;">
+  <button onclick="window.location.href='nextaction.html'">[NEXT ACTION]</button>
+</div>
+
+<script>
+let openedNodes = 0;
+
+function loadNode(file) {
+  fetch(file)
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("logDisplay").textContent = data;
+      openedNodes++;
+      if (openedNodes >= 10) {
+        document.getElementById("nextBtn").style.display = "block";
+      }
+    })
+    .catch(err => {
+      document.getElementById("logDisplay").textContent = "[FAILED TO LOAD NODE DATA]";
+    });
+}
+</script>

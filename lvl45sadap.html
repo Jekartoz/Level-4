@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INPUT JAWABAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+  body {
+      background: #000;
+      color: #00ff00;
+      font-family: 'Share Tech Mono' , monospace;
+      margin: 0;
+      padding: 20px;
+    .kotak-merah {
+      border: px solid red;
+      padding: 20px; 
+      width: 300px;                     
+      text-align: left;
+      color: red;                   
+      font-family: 'Share Tech Mono', sans-serif;
+      font-size: 15px;                    
+      box-shadow: 0 0 15px red;     
+      border-radius: 10px;                
+      margin: 50px auto;    
+      background: black;
+    }
+    #logArea {
+      white-space: pre-wrap;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 14px;
+      background: #ff3333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #333;
+      color: #777;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<h2>LIVE INTERCEPT FEED [ACTIVE]</h2>
+<div id="logArea">[INTERCEPT INITIALIZED] Connecting to secured relay...</div>
+
+<div id="buttonArea" style="display:none;">
+  <button disabled>↺ Retry Intercept</button>
+  <button onclick="location.href='level6.html'">→ Continue to Command Post</button>
+</div>
+
+<script>
+  const logLines = [
+    "[INTERCEPT FEED - 00:04:22 AM]",
+    "# [0011] : Statusnya?",
+    "# [I#O@I>I] : ARM masih sibuk tracing di sektor-HEX. Kita sudah lepas.",
+    "# [0011] : Progress eksekusi payload?",
+    "# [10010] : D4RKS33D 40% injected. Final key masih disamarkan.",
+    "# [0011] : Bagus. Pastikan kode E4F-TRIGGER tetap dalam relay sektor-D.",
+    "# [I#O@I>I] : Masalah, ada trainee yang berhasil bypass decoy.",
+    "# [0011] : Biarin. Dia tida akan sampai ke fase initiator.",
+    "# [I#O@I>I] : Kalau dia intercept log ini?",
+    "# [0011] : Kalau intercept, sebelum dia sampai ke fragmen C, saya akan—",
+    "[CONNECTION LOST]",
+    "SIGNAL RECONNECTING...",
+    "[ERROR] Intercept link terminated by remote host."
+  ];
+
+  let logIndex = 0;
+  const logArea = document.getElementById("logArea");
+
+  function printLog() {
+  if (logIndex < logLines.length) {
+    logArea.textContent += "\n" + logLines[logIndex];
+    logIndex++;
+    setTimeout(printLog, 1200);
+  } else {
+    document.getElementById("buttonArea").innerHTML = `
+      <button onclick="window.location.href='cb.html'" style="
+        padding: 12px 25px;
+        background: #00ff00;
+        color: #000;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+      ">PROCEED TO LEVEL 5</button>
+    `;
+    document.getElementById("buttonArea").style.display = "block";
+  }
+}
+
+  setTimeout(printLog, 1500);
+</script>
+
+</body>
+</html>
